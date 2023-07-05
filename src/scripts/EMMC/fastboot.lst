@@ -1,0 +1,9 @@
+uuu_version 1.5.21
+
+# @_fastboot_path       | fastboot
+
+# burn fastboot
+SDP: boot -f _fastboot_path
+FB: ucmd setenv fastboot_dev mmc
+FB: ucmd setenv mmcdev ${emmc_dev}
+FB: done
