@@ -1,9 +1,10 @@
 uuu_version 1.5.21
 
-# @_target              | device tree
+# @_target_path         | device tree path
+# @_target_file         | device tree file name
 
 # burn device tree
 FB: ucmd setenv fastboot_buffer ${fdt_addr}
-FB: download -f _target
-FB[-t 60000]: ucmd fatwrite mmc ${emmc_dev}:1 ${fastboot_buffer} imx6ull-14x14-my-evk.dtb ${fastboot_bytes}
+FB: download -f _target_path
+FB[-t 60000]: ucmd fatwrite mmc ${emmc_dev}:1 ${fastboot_buffer} _target_file ${fastboot_bytes}
 FB: Done

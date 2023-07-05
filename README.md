@@ -18,7 +18,9 @@ Gui tool based on [mfgtools](https://github.com/nxp-imx/mfgtools) uuu.
 
 ## :rocket: Quick Start
 
+## :camera: Previews
 
+![](/docs/images/preview.gif)
 
 ## :mailbox_with_mail: Feedback and Contribution
 

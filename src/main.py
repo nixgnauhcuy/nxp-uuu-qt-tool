@@ -69,6 +69,8 @@ class MyPyQT_Form(QMainWindow, Ui_MainWindow):
         self.deviceTreeBurnPushButton.clicked.connect(self.BurnPushButtonCb)
         self.rootfsBurnPushButton.clicked.connect(self.BurnPushButtonCb)
 
+        self.clearLogPushButton.clicked.connect(self.ClearLogPushButtonCb)
+
         self.burnTaskThread = BurnTaskThread(self)
         self.burnTaskThread.uiUpdateSignal.connect(self.LogPrint)
         self.burnTaskThread.finished.connect(self.BurnTaskThreadFinished)
@@ -102,7 +104,7 @@ class MyPyQT_Form(QMainWindow, Ui_MainWindow):
         self.logPlainTextEdit.insertPlainText(log)
 
     def BurnTaskThreadFinished(self):
-        self.LogPrint("\n------ Burn Completed!Please Reset Your Device! ------\n")
+        self.LogPrint("\n------ Burn Completed! ------\n")
 
 
     def BurnPushButtonCb(self):
@@ -110,6 +112,7 @@ class MyPyQT_Form(QMainWindow, Ui_MainWindow):
         
         _target = ""
         _targetPath = ""
+        _extendArg = ""
         strWarningText = ""
         if curObjectName == "fastbootBurnPushButton":
             _target = "fastboot"
@@ -126,12 +129,14 @@ class MyPyQT_Form(QMainWindow, Ui_MainWindow):
         elif curObjectName == "kernelBurnPushButton":
             _target = "kernel"
             _targetPath = self.kernelPathLineEdit.text()
+            _extendArg = os.path.basename(_targetPath)
             if "zImage" not in _targetPath:
                 strWarningText = "Please check the kernel path!"
                 _targetPath = ""
         elif curObjectName == "deviceTreeBurnPushButton": 
             _target = "devicetree"
             _targetPath = self.deviceTreePathLineEdit.text()
+            _extendArg = os.path.basename(_targetPath)
             if ".dtb" not in _targetPath:
                 strWarningText = "Please check the devicetree path!"
                 _targetPath = ""
@@ -147,9 +152,10 @@ class MyPyQT_Form(QMainWindow, Ui_MainWindow):
             _flashMemory = self.flashMemoryComboBox.currentText()
             _targetBurnPath = _targetPath
             _targetBurn = _target
+            _extendCmdArg = _extendArg
 
             _scriptsPath = os.path.join('scripts', _flashMemory, _targetBurn + '.lst')
-            _cmd = self.uuuTool + ' -v -b ' + _scriptsPath + ' ' + _targetBurnPath
+            _cmd = self.uuuTool + ' -v -b ' + _scriptsPath + ' ' + _targetBurnPath + ' ' + _extendCmdArg
             self.burnTaskThread.setRunCmd(_cmd)
             self.burnTaskThread.start()
         else:
@@ -178,7 +184,7 @@ class MyPyQT_Form(QMainWindow, Ui_MainWindow):
             _path = self.deviceTreePathLineEdit
         else:
             _curFirmware = "rootfs"
-            _type = "rootfs files(*.bz2; *.ext4)"
+            _type = "rootfs files(*.ext4)"
             _path = self.rootfsPathLineEdit
         file = QFileDialog.getOpenFileName(self, "Please select the " + _curFirmware + " file", "", _type)
         if file[0] != "":
@@ -186,6 +192,8 @@ class MyPyQT_Form(QMainWindow, Ui_MainWindow):
             config.configini.setValue(_curFirmware, file[0])
 
 
+    def ClearLogPushButtonCb(self):
+        self.logPlainTextEdit.clear()
 
     def CheckUsbMonitorCb(self):
         p = subprocess.Popen(self.uuuTool + " " + "-lsusb",

@@ -18,7 +18,9 @@
 
 ## :rocket: 快速开始
 
+## :camera: 预览
 
+![](/docs/images/preview.gif)
 
 ## :mailbox_with_mail: 反馈与贡献
 
