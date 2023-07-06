@@ -156,17 +156,17 @@
      </item>
      <item>
       <property name="text">
-       <string>SD CARD</string>
+       <string>SDCARD</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>NAND FLASH</string>
+       <string>NANDFLASH</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>NOR FLASH</string>
+       <string>NORFLASH</string>
       </property>
      </item>
     </widget>

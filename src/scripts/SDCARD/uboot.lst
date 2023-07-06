@@ -1,0 +1,10 @@
+uuu_version 1.5.21
+
+# @_target              | uboot
+
+# burn uboot imx
+FB: ucmd setenv fastboot_dev mmc
+FB: ucmd setenv mmcdev ${sd_dev}
+FB: ucmd mmc dev ${sd_dev}
+FB: flash bootloader _target
+FB: done

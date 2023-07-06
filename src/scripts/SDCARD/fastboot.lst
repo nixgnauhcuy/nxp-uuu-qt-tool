@@ -1,0 +1,7 @@
+uuu_version 1.5.21
+
+# @_target       | fastboot
+
+# burn fastboot
+SDP: boot -f _target
+FB: done
