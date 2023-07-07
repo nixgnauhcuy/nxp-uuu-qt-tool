@@ -1,0 +1,10 @@
+uuu_version 1.5.21
+
+# @_target_path         | kernel path
+# @_target_file         | kernel file name
+
+# burn kernel
+FB: ucmd setenv fastboot_buffer ${loadaddr}
+FB: download -f _target_path
+FB[-t 60000]: ucmd fatwrite mmc ${sd_dev}:1 ${fastboot_buffer} _target_file ${fastboot_bytes}
+FB: Done

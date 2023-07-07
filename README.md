@@ -13,7 +13,7 @@ Gui tool based on [mfgtools](https://github.com/nxp-imx/mfgtools) uuu.
 - [x] i.MX 6ULL (Burn Uboot、Kernel、Device Tree、Rootfs)
   - [x] EMMC
   - [ ] NAND FLASH
-  - [ ] SD CARD
+  - [x] SD CARD
   - [ ] NOR FLASH
 
 ## :rocket: Quick Start

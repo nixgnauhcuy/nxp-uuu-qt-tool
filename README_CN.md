@@ -13,7 +13,7 @@
 - [x] i.MX 6ULL (烧录 Uboot、Kernel、Device Tree、Rootfs)
   - [x] EMMC
   - [ ] NAND FLASH
-  - [ ] SD CARD
+  - [x] SD CARD
   - [ ] NOR FLASH
 
 ## :rocket: 快速开始
