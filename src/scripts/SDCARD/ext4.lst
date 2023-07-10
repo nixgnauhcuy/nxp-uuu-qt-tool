@@ -1,0 +1,9 @@
+uuu_version 1.5.21
+
+# @_target_path              | target file path
+# @_target                   | target file
+
+FB: ucmd setenv fastboot_buffer ${loadaddr}
+FB: download -f _target_path
+FB[-t 60000]: ucmd ext4write mmc ${sd_dev}:2 ${fastboot_buffer} _target ${fastboot_bytes}
+FB: Done

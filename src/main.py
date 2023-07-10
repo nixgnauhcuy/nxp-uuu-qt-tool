@@ -33,7 +33,7 @@ class BurnTaskThread(QThread):
         try:
             self.running = True
             self.uiUpdateSignal.emit("\n------ Star Burn! ------\n")
-            p = subprocess.Popen(self.cmd, shell=False, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True)
+            p = subprocess.Popen(self.cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True)
             
             while p.poll() is None:
                 line = p.stdout.readline()
@@ -62,12 +62,14 @@ class MyPyQT_Form(QMainWindow, Ui_MainWindow):
         self.kernelPathPushButton.clicked.connect(self.PathPushButtonCb)
         self.deviceTreePathPushButton.clicked.connect(self.PathPushButtonCb)
         self.rootfsPathPushButton.clicked.connect(self.PathPushButtonCb)
+        self.filePathPushButton.clicked.connect(self.FilePathPushButtonCb)
 
         self.fastbootBurnPushButton.clicked.connect(self.BurnPushButtonCb)
         self.ubootBurnPushButton.clicked.connect(self.BurnPushButtonCb)
         self.kernelBurnPushButton.clicked.connect(self.BurnPushButtonCb)
         self.deviceTreeBurnPushButton.clicked.connect(self.BurnPushButtonCb)
         self.rootfsBurnPushButton.clicked.connect(self.BurnPushButtonCb)
+        self.fileBurnPushButton.clicked.connect(self.FileBurnPushButtonCb)
 
         self.clearLogPushButton.clicked.connect(self.ClearLogPushButtonCb)
 
@@ -94,6 +96,7 @@ class MyPyQT_Form(QMainWindow, Ui_MainWindow):
         self.kernelPathLineEdit.setText(config.config_param["kernel"])
         self.deviceTreePathLineEdit.setText(config.config_param["devicetree"])
         self.rootfsPathLineEdit.setText(config.config_param["rootfs"])
+        self.filePathLineEdit.setText(config.config_param["file"])
 
         self.CheckUsbMonitorCb()
 
@@ -163,6 +166,20 @@ class MyPyQT_Form(QMainWindow, Ui_MainWindow):
             self.warningMsgBox.exec()
 
 
+    def FileBurnPushButtonCb(self):
+        _targetPath = self.filePathLineEdit.text()
+        if _targetPath != "":
+            _flashMemory = self.flashMemoryComboBox.currentText()
+            _targetBurnPath = _targetPath
+            _targetBurn = self.fileComboBox.currentText()
+            _extendCmdArg = "/" + os.path.basename(_targetBurnPath)
+
+            _scriptsPath = os.path.join('scripts', _flashMemory, _targetBurn + '.lst')
+            _cmd = self.uuuTool + ' -v -b ' + _scriptsPath + ' ' + _targetBurnPath + ' ' + _extendCmdArg
+            self.burnTaskThread.setRunCmd(_cmd)
+            self.burnTaskThread.start()
+
+
     def PathPushButtonCb(self):
         curObjectName = self.sender().objectName()
         
@@ -191,13 +208,18 @@ class MyPyQT_Form(QMainWindow, Ui_MainWindow):
             _path.setText(file[0])
             config.configini.setValue(_curFirmware, file[0])
 
+    def FilePathPushButtonCb(self):
+        file = QFileDialog.getOpenFileName(self, "Please select the file", "")
+        if file[0] != "":
+            self.filePathLineEdit.setText(file[0])
+            config.configini.setValue("file", file[0])
 
     def ClearLogPushButtonCb(self):
         self.logPlainTextEdit.clear()
 
     def CheckUsbMonitorCb(self):
         p = subprocess.Popen(self.uuuTool + " " + "-lsusb",
-                            shell=False, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+                            shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
         p.wait()
 
         _status = 0
@@ -211,19 +233,18 @@ class MyPyQT_Form(QMainWindow, Ui_MainWindow):
                 self.chipLineEdit.setText(device)
                 self.statusCurLabel.setText("Neew burn fastboot!")
                 self.normalGroupBox.setEnabled(False)
+                self.advancedGroupBox.setEnabled(False)
             elif 'FB' in line:
                 _status = 2
                 self.statusCurLabel.setText("Ready!")
                 self.normalGroupBox.setEnabled(True)
+                self.advancedGroupBox.setEnabled(True)
         
         if _status == 0:
             self.chipLineEdit.setText("")
             self.statusCurLabel.setText("No connect device!")
             self.normalGroupBox.setEnabled(False)
-        
-
-
-
+            self.advancedGroupBox.setEnabled(False)
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)

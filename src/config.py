@@ -12,6 +12,7 @@ config_param = {
     "kernel": '',
     "devicetree": '',
     "rootfs": '',
+    "file": '',
 }
 
 

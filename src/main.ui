@@ -420,7 +420,10 @@
      </item>
     </layout>
    </widget>
-   <widget class="QGroupBox" name="deviceGroupBox_3">
+   <widget class="QGroupBox" name="advancedGroupBox">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -432,7 +435,70 @@
     <property name="title">
      <string>Advanced</string>
     </property>
-    <layout class="QGridLayout" name="gridLayout_3"/>
+    <layout class="QGridLayout" name="gridLayout_3">
+     <item row="0" column="0">
+      <widget class="QLabel" name="fileLabel">
+       <property name="text">
+        <string>file</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="4">
+      <widget class="QPushButton" name="fileBurnPushButton">
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset resource="resources.qrc">
+         <normaloff>:/img/Resources/img/download.png</normaloff>:/img/Resources/img/download.png</iconset>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QLineEdit" name="filePathLineEdit">
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="3">
+      <widget class="QPushButton" name="filePathPushButton">
+       <property name="minimumSize">
+        <size>
+         <width>24</width>
+         <height>24</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>24</width>
+         <height>24</height>
+        </size>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset resource="resources.qrc">
+         <normaloff>:/img/Resources/img/folder.png</normaloff>:/img/Resources/img/folder.png</iconset>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="2">
+      <widget class="QComboBox" name="fileComboBox">
+       <item>
+        <property name="text">
+         <string>ext4</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>fat</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+    </layout>
    </widget>
    <widget class="QGroupBox" name="logGroupBox">
     <property name="geometry">
@@ -470,7 +536,7 @@
      <x>0</x>
      <y>0</y>
      <width>830</width>
-     <height>21</height>
+     <height>32</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu">
