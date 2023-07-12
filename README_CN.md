@@ -20,7 +20,9 @@
 
 ## :camera: 预览
 
-![](/docs/images/preview.gif)
+| EMMC                       | SDCARD                       |
+| -------------------------- | ---------------------------- |
+| ![](/docs/images/emmc.gif) | ![](/docs/images/sdcard.gif) |
 
 ## :mailbox_with_mail: 反馈与贡献
 

@@ -5,7 +5,7 @@ uuu_version 1.5.21
 # burn rootfs
 FB: ucmd mmc dev ${emmc_dev}
 #FB: getvar all
-FB: flash mmcsdb2 _target
+FB[-t 150000]: flash mmcsdb2 _target
 FB: ucmd if env exists emmc_ack; then ; else setenv emmc_ack 0; fi;
 FB: ucmd mmc partconf ${emmc_dev} ${emmc_ack} 1 0
 FB: Done

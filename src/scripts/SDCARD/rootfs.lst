@@ -4,5 +4,5 @@ uuu_version 1.5.21
 
 # burn rootfs
 FB: ucmd mmc dev 0
-FB: flash mmcsda2 _target
+FB[-t 150000]: flash mmcsda2 _target
 FB: Done

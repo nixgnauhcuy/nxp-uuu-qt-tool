@@ -20,7 +20,9 @@ Gui tool based on [mfgtools](https://github.com/nxp-imx/mfgtools) uuu.
 
 ## :camera: Previews
 
-![](/docs/images/preview.gif)
+| EMMC                       | SDCARD                       |
+| -------------------------- | ---------------------------- |
+| ![](/docs/images/emmc.gif) | ![](/docs/images/sdcard.gif) |
 
 ## :mailbox_with_mail: Feedback and Contribution
 

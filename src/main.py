@@ -6,6 +6,7 @@ import config
 import resources_rc
 
 from Ui_main import Ui_MainWindow
+from about import AboutWindow
 from PyQt6.QtWidgets import QApplication, QMainWindow, QFileDialog, QMessageBox
 from PyQt6.QtCore import QTimer, QThread, pyqtSignal
 from PyQt6.QtGui import QTextCursor
@@ -52,6 +53,8 @@ class MyPyQT_Form(QMainWindow, Ui_MainWindow):
         super().__init__()
         self.setupUi(self)
 
+        self.aboutUi = AboutWindow()
+
         self.warningMsgBox = QMessageBox()
         self.warningMsgBox.setIcon(QMessageBox.Icon.Warning)
         self.warningMsgBox.setWindowTitle("Warning")
@@ -72,6 +75,10 @@ class MyPyQT_Form(QMainWindow, Ui_MainWindow):
         self.fileBurnPushButton.clicked.connect(self.FileBurnPushButtonCb)
 
         self.clearLogPushButton.clicked.connect(self.ClearLogPushButtonCb)
+
+
+
+        self.aboutAction.triggered.connect(self.aboutMenuCb)
 
         self.burnTaskThread = BurnTaskThread(self)
         self.burnTaskThread.uiUpdateSignal.connect(self.LogPrint)
@@ -245,6 +252,9 @@ class MyPyQT_Form(QMainWindow, Ui_MainWindow):
             self.statusCurLabel.setText("No connect device!")
             self.normalGroupBox.setEnabled(False)
             self.advancedGroupBox.setEnabled(False)
+
+    def aboutMenuCb(self):
+        self.aboutUi.show()
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)

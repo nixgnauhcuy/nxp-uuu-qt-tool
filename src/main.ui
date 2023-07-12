@@ -536,17 +536,23 @@
      <x>0</x>
      <y>0</y>
      <width>830</width>
-     <height>32</height>
+     <height>21</height>
     </rect>
    </property>
-   <widget class="QMenu" name="menu">
+   <widget class="QMenu" name="helpMenu">
     <property name="title">
-     <string>About</string>
+     <string>Help</string>
     </property>
+    <addaction name="aboutAction"/>
    </widget>
-   <addaction name="menu"/>
+   <addaction name="helpMenu"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
+  <action name="aboutAction">
+   <property name="text">
+    <string>About</string>
+   </property>
+  </action>
  </widget>
  <resources>
   <include location="resources.qrc"/>
