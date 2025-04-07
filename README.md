@@ -24,6 +24,14 @@ ls -ash dist/nxp-uuu-qt-tool
 9.7M dist/nxp-uuu-qt-tool
 ```
 
+### Linux
+
+```bash
+install -vDm755 dist/nxp-uuu-qt-tool /usr/bin/nxp-uuu-qt-tool
+install -vDm644 src/Resources/applications/nxp-uuu-qt-tool.desktop /usr/share/applications/nxp-uuu-qt-tool.desktop
+install -vDm644 src/Resources/icon/main.png /usr/share/icons/hicolor/32x32/apps/nxp-uuu-qt-tool.png
+```
+
 ## :camera: Previews
 
 | EMMC                       | SDCARD                       |
