@@ -18,6 +18,12 @@
 
 ## :rocket: 快速开始
 
+```bash
+./nuitka_build.sh
+ls -ash dist/nxp-uuu-qt-tool
+9.7M dist/nxp-uuu-qt-tool
+```
+
 ## :camera: 预览
 
 | EMMC                       | SDCARD                       |

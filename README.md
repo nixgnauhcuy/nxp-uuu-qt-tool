@@ -18,6 +18,12 @@ Gui tool based on [mfgtools](https://github.com/nxp-imx/mfgtools) uuu.
 
 ## :rocket: Quick Start
 
+```bash
+./nuitka_build.sh
+ls -ash dist/nxp-uuu-qt-tool
+9.7M dist/nxp-uuu-qt-tool
+```
+
 ## :camera: Previews
 
 | EMMC                       | SDCARD                       |
