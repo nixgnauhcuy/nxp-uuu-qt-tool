@@ -18,6 +18,28 @@
 
 ## :rocket: 快速开始
 
+```bash
+./nuitka_build.sh
+ls -ash dist/nxp-uuu-qt-tool
+9.7M dist/nxp-uuu-qt-tool
+```
+
+### Linux
+
+```bash
+install -vDm755 dist/nxp-uuu-qt-tool /usr/bin/nxp-uuu-qt-tool
+install -vDm644 src/Resources/applications/nxp-uuu-qt-tool.desktop /usr/share/applications/nxp-uuu-qt-tool.desktop
+install -vDm644 src/Resources/icon/main.png /usr/share/icons/hicolor/32x32/apps/nxp-uuu-qt-tool.png
+```
+
+### Arch Linux
+
+Arch Linux 用户可以通过 [AUR](https://aur.archlinux.org/packages/nxp-uuu-qt-tool-git) 或 [自建源](https://github.com/taotieren/aur-repo) 安装 
+
+```bash
+yay -Syu nxp-uuu-qt-tool
+```
+
 ## :camera: 预览
 
 | EMMC                       | SDCARD                       |

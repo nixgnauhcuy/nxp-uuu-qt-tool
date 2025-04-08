@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Gui tool based on mfgtools uuu.
+Comment=Gui tool based on mfgtools uuu.
+Icon=/usr/share/icons/hicolor/32x32/apps/nxp-uuu-qt-tool.png
+Exec=/usr/bin/nxp-uuu-qt-tool
+Categories=Development;
