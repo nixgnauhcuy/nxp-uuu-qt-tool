@@ -32,6 +32,14 @@ install -vDm644 src/Resources/applications/nxp-uuu-qt-tool.desktop /usr/share/ap
 install -vDm644 src/Resources/icon/main.png /usr/share/icons/hicolor/32x32/apps/nxp-uuu-qt-tool.png
 ```
 
+### Arch Linux
+
+Arch Linux users can install via [AUR](https://aur.archlinux.org/packages/nxp-uuu-qt-tool-git) or [self-built sources](https://github.com/taotieren/aur-repo). 
+
+```bash
+yay -Syu nxp-uuu-qt-tool
+```
+
 ## :camera: Previews
 
 | EMMC                       | SDCARD                       |
