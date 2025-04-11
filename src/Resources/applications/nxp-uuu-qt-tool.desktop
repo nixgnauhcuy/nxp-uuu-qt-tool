@@ -1,8 +1,9 @@
 [Desktop Entry]
 Type=Application
 Version=1.0
-Name=Gui tool based on mfgtools uuu.
+Name=nxp-uuu-qt-tool
 Comment=Gui tool based on mfgtools uuu.
+Comment[zh_CN]=基于 mfgtools uuu 的 Gui 工具。
 Icon=/usr/share/icons/hicolor/32x32/apps/nxp-uuu-qt-tool.png
 Exec=/usr/bin/nxp-uuu-qt-tool
 Categories=Development;
